@@ -63,19 +63,18 @@ const CryptoCard = ({ data }) => {
 
       {/* Coin Header */}
       <div className="flex items-center gap-4">
-        <img src={data.image} alt={data.name} className="w-10 h-10" />
+        <img src={data?.image} alt={data?.name} className="w-10 h-10" />
         <h2 className="text-xl font-semibold">
-          {data.name} ({data.symbol.toUpperCase()})
+          {data?.name} ({data?.symbol.toUpperCase()})
         </h2>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { title: '24h High', value: `$${data.high24}` },
-          { title: '24h Low', value: `$${data.low24}` },
-          { title: 'Current Price', value: `$${data.currentPrice}` },
-          { title: 'Market Cap', value: `$${data.marketCap.toLocaleString()}` },
+          { title: '24h High', value: `$${data?.high_24h}` },
+          { title: '24h Low', value: `$${data?.low_24h}` },
+          { title: 'Current Price', value: `$${data?.current_price}` },
         ].map((stat, i) => (
           <div key={i} className="bg-gray-100 p-4 rounded-lg text-center">
             <div className="text-sm text-gray-500">{stat.title}</div>
@@ -98,8 +97,8 @@ const CryptoCard = ({ data }) => {
         <div className="p-4 bg-indigo-100 rounded-lg animate-fade-in">
           <p className="text-gray-700">
             📈 The price has shown volatility in the last 24 hours, reaching a high of ${data.high24} 
-            and a low of ${data.low24}. Market cap indicates this cryptocurrency is 
-            {data.marketCap > 1000000000 ? ' a large-cap asset' : ' a mid-cap asset'}.
+            and a low of ${data?.low24}. Market cap indicates this cryptocurrency is 
+            {data?.marketCap > 1000000000 ? ' a large-cap asset' : ' a mid-cap asset'}.
           </p>
         </div>
       )}

@@ -2,13 +2,23 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { axiosInstance } from "../lib/axios";
+import { useDataContext } from "../context/DataContext";
+import CryptoCard from "../components/CryptoCard"
 
 const Coin = () => {
   
     const {symbol} = useParams();
-    
-    const [tokenAddress,setTokenAddress] = useState("0xf8Fb3713D459D7C1018BD0A49D19b4C44290EBE5"); 
 
+  const data = useDataContext();
+    console.log(data.data);
+    
+    const thisToken = data.data.find(t => t.symbol === symbol);
+
+    console.log("thisToken",thisToken);
+    
+
+
+    const [tokenAddress,setTokenAddress] = useState("0xf8Fb3713D459D7C1018BD0A49D19b4C44290EBE5"); 
     const tokens = [
         {name:"usdt",address:"0x7169D38820dfd117C3FA1f22a697dBA58d90BA06"}, 
         {name:"uni",address:"0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"},
@@ -16,7 +26,6 @@ const Coin = () => {
         {name:"usdc",address:"0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238"},   
         {name:"LINK",address:"0xf8Fb3713D459D7C1018BD0A49D19b4C44290EBE5"},
     ]
-
     
     useEffect(()=>{
         const foundToken = tokens.find(token => token.name === symbol);
@@ -25,6 +34,7 @@ const Coin = () => {
         }
     },[symbol]);
 
+    //Get data from backend
     const {data:coinData} = useQuery({
         queryKey:["coinData",tokenAddress],
         queryFn:async () =>{
@@ -37,7 +47,7 @@ const Coin = () => {
     
     return (
     <div>
-        <CryptoCard  />
+        <CryptoCard data={thisToken} />
     </div>
   )
 }

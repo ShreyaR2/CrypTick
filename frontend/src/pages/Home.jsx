@@ -8,6 +8,7 @@ import axios from "axios";
 import { useDataContext } from "../context/DataContext";
 
 const Dashboard = () => {
+
   const {data: crypticCoin,isError,isLoading} = useQuery({
     queryKey: ["crypticCoin"],
     queryFn: async () => {
@@ -25,14 +26,13 @@ const Dashboard = () => {
     },
   });
 
-
+  //Adding data to context
   const data = useDataContext();
   data.setData(crypticCoin);
-
   
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">Top 10 Cryptos</h1>
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">Top 10 Crypto Coins</h1>
       {isLoading && <p className="text-center">Loading...</p>}
       {isError && <p className="text-center text-red-500">Error loading data</p>}
       {crypticCoin && crypticCoin.length > 0 ? (

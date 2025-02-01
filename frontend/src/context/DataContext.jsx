@@ -9,7 +9,7 @@ export const useDataContext = () => {
 export const DataContextProvider = (props) =>{
     const [data,setData] = useState(null);
 
-    return <DataContext.Provider value={{data,setData}}>
+    return (<DataContext.Provider value={{data,setData}}>
         {props.children}
-    </DataContext.Provider>
+    </DataContext.Provider>)
 }
