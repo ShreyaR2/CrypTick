@@ -1,7 +1,15 @@
 const axios = require('axios');
+const Web3 = require('web3').Web3;
+const { HttpProvider } = require('web3-providers-http');
+const contractABI = require('../abi.json');
+const contractAddress = require('../contractAddress');
+require('dotenv').config();
 
+
+const web3 = new Web3(new HttpProvider(process.env.INFURA_SEPOLIA));
 
 const getIndividualData = async () => {
+ 
   try {
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     const result = await contract.methods.getMarketData(tokenAddress).call();
@@ -90,7 +98,9 @@ const getAllData = async () => {
   console.log(finalData);
 };
 
-modeule.exports = {
+getAllData();
+
+module.exports = {
   getAllData,
   getIndividualData,
 };

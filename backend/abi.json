@@ -1,0 +1,37 @@
+[
+    {
+     "inputs": [
+      {
+       "internalType": "address",
+       "name": "_factory",
+       "type": "address"
+      },
+      {
+       "internalType": "address",
+       "name": "_weth",
+       "type": "address"
+      }
+     ],
+     "stateMutability": "nonpayable",
+     "type": "constructor"
+    },
+    {
+     "inputs": [
+      {
+       "internalType": "address",
+       "name": "token",
+       "type": "address"
+      }
+     ],
+     "name": "getMarketData",
+     "outputs": [
+      {
+       "internalType": "uint256[12]",
+       "name": "stats",
+       "type": "uint256[12]"
+      }
+     ],
+     "stateMutability": "view",
+     "type": "function"
+    }
+   ]
