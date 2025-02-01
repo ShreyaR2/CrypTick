@@ -76,7 +76,8 @@ def predict_pump_or_dump(input_data: ModelInput):
     print("Prediction:", prediction)
 
     # Return the result
-    return {"prediction": "Pump&Dump" if prediction == 1 else "Happi happi"}
+    pred = 1 if prediction == 1 else 0
+    return pred
 
 if __name__ == 'main':
     uvicorn.run(app, host='localhost', port=8000)

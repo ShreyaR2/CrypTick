@@ -1,6 +1,5 @@
 import React from "react";
 import Hero1 from "../components/HeroTyping";
-import ApiStuff from "./ApiStuff";
 
 import { useQuery } from "@tanstack/react-query";
 // import { axiosInstance } from "../lib/axios";

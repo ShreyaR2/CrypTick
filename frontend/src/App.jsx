@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import Layout from "./Layout"
 import LandingPage from "./pages/LandingPage"
 import Home from "./pages/Home"
-import ApiStuff from "./pages/ApiStuff";
+import Coin from "./pages/Coin"
 
 const App = () => {
   
@@ -12,7 +12,7 @@ const App = () => {
             <Route  path={'/'} element={<Layout/>}>
                 <Route path="" element={<LandingPage/>}/>
                 <Route path="home" element={<Home/>}/>
-                <Route path="api" element={<ApiStuff/>}/>
+                <Route path="coin/:name" element={<Coin/>}/>
             </Route>
         )
     )
