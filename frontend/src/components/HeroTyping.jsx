@@ -3,7 +3,7 @@ import {ReactTyped} from 'react-typed';
 
 const Hero1 = () => {
   return (
-    <div className='text-black'>
+    <div className='text-black border border-amber-400' >
       <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
         <p className='text-[#00df9a] font-bold p-2'>
            WITH DATA ANALYTICS
