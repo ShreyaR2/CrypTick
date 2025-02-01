@@ -2,7 +2,8 @@ import React from "react";
 import Hero1 from "../components/HeroTyping";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
+import CoinRanking from "../components/CoinRanking"
+// import Coin from "../"
 // import { axiosInstance } from "../lib/axios";
 import axios from "axios";
 
@@ -26,15 +27,18 @@ const Dashboard = () => {
     },
   });
 
-  console.log(crypticCoin);
+  // console.log(crypticCoin);
   
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Top 10 Cryptos</h1>
       {isLoading && <p className="text-center">Loading...</p>}
       {isError && <p className="text-center text-red-500">Error loading data</p>}
-
-      <CoinRanking crypticCoin={crypticCoin} />
+      {crypticCoin && crypticCoin.length > 0 ? (
+        <CoinRanking crypticCoin={crypticCoin} />
+      ):(
+        <div>No data to show right now</div>
+      )}
     </div>
   );
 };

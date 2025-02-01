@@ -1,5 +1,10 @@
-const CoinRanking = (crypticCoin) => {
+import {Link} from "react-router-dom"
+
+const CoinRanking = (props) => {
   
+    console.log(props.crypticCoin);
+    console.log("Inside ranking");
+    
   
   return (
     <div className="overflow-x-auto">
@@ -11,7 +16,7 @@ const CoinRanking = (crypticCoin) => {
             </tr>
           </thead>
           <tbody>
-            {crypticCoin?.map((c) => (
+            {props.crypticCoin && props.crypticCoin?.map((c) => (
               <tr key={c.id} className="border-b">
                 <td className="px-6 py-4 flex items-center gap-3">
                   <img src={c.image} alt={c.name} className="w-6 h-6" />
