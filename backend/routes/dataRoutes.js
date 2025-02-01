@@ -5,7 +5,7 @@ const {getAllData,getIndividualData}= require('../controllers/dataControllers')
 
 router.get('/',getAllData);
 
-router.get('',getIndividualData);
+router.get('/name',getIndividualData);
 
 
 module.exports = router;

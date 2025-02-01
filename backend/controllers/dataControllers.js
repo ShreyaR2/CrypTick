@@ -8,8 +8,10 @@ require('dotenv').config();
 
 const web3 = new Web3(new HttpProvider(process.env.INFURA_SEPOLIA));
 
-const getIndividualData = async () => {
+const getIndividualData = async (req,res) => { 
  
+  const {tokenAddress} = req.body;
+  
   try {
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     const result = await contract.methods.getMarketData(tokenAddress).call();
@@ -32,21 +34,24 @@ const getIndividualData = async () => {
       };
 
       // Send scaled data to FastAPI
-      const response = await axios.post(
-        "http://localhost:8000/cryptik_prediction",
-        inputData
-      );
+      const response = await axios.post("http://localhost:8000/cryptik_prediction",inputData);
       console.log("Prediction:", response.data);
-      console.log("Data sent successfully");
+
+      res.status(200).json(response.data);
+
     } catch (error) {
       console.log("Error in ML in getIndividualData : ", error.message);
+      return res.status(500).json({message:"Error in ML in getIndividualData"});
     }
+
   } catch (err) {
     console.error("Error in Blockchain in getIndividualData :", err.message);
+    return res.status(500).json({message:"Error in Blockchain in getIndividualData"});
   }
+
 };
 
-const getAllData = async () => {
+const getAllData = async (req,res) => {
   const memeCoins = [
     "0x7169D38820dfd117C3FA1f22a697dBA58d90BA06",
     "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
@@ -80,25 +85,23 @@ const getAllData = async () => {
         };
 
         // Send scaled data to FastAPI
-        const response = await axios.post(
-          "http://localhost:8000/cryptik_prediction",
-          inputData
-        );
-        // console.log("Prediction:", response.data);
+        const response = await axios.post("http://localhost:8000/cryptik_prediction",inputData);
         finalData.push(response.data);
+
       } catch (error) {
         console.log("Error in ML: ", error.message);
+        return res.status(500).json({message:"Error in ML"})
       }
     } catch (error) {
       console.log("Error in Blokchain", error.message);
-      break;
+      return res.status(500).json({message:"Error in Blokchain"})
     }
   }
 
   console.log(finalData);
+  res.status(500).json(finalData);
 };
 
-getAllData();
 
 module.exports = {
   getAllData,
