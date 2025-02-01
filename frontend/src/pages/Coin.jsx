@@ -37,7 +37,7 @@ const Coin = () => {
     
     return (
     <div>
-        Coin bro 
+        <CryptoCard  />
     </div>
   )
 }

@@ -1,19 +1,17 @@
 import React from "react";
 import Hero1 from "../components/HeroTyping";
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import CoinRanking from "../components/CoinRanking"
 // import Coin from "../"
 // import { axiosInstance } from "../lib/axios";
 import axios from "axios";
+import { useDataContext } from "../context/DataContext";
 
 const Dashboard = () => {
-  const {
-    data: crypticCoin,isError,isLoading} = useQuery({
+  const {data: crypticCoin,isError,isLoading} = useQuery({
     queryKey: ["crypticCoin"],
     queryFn: async () => {
-      const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets",
+      const response = await axios.get("https://api.coingecko.com/api/v3/coins/markets",
         {
           params: {
             vs_currency: "usd",
@@ -27,7 +25,10 @@ const Dashboard = () => {
     },
   });
 
-  // console.log(crypticCoin);
+
+  const data = useDataContext();
+  data.setData(crypticCoin);
+
   
   return (
     <div className="p-6">
