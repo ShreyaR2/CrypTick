@@ -4,6 +4,7 @@ import Layout from "./Layout"
 import LandingPage from "./pages/LandingPage"
 import Home from "./pages/Home"
 import Coin from "./pages/Coin"
+import AllCoins from "./pages/AllCoins"
 
 const App = () => {
   
@@ -12,7 +13,9 @@ const App = () => {
             <Route  path={'/'} element={<Layout/>}>
                 <Route path="" element={<LandingPage/>}/>
                 <Route path="home" element={<Home/>}/>
-                <Route path="coin/:name" element={<Coin/>}/>
+                <Route path="coin/" element={<AllCoins/>}>
+                    <Route path=":symbol" element={<Coin/>}/>
+                </Route>
             </Route>
         )
     )

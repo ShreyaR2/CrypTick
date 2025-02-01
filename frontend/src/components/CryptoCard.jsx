@@ -6,6 +6,7 @@ const CryptoCard = ({ data }) => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  
   useEffect(() => {
     if (chartRef.current) {
       const ctx = chartRef.current.getContext('2d');

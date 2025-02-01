@@ -1,6 +1,6 @@
 import React from "react";
 import Hero1 from "../components/HeroTyping";
-
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 // import { axiosInstance } from "../lib/axios";
 import axios from "axios";
@@ -26,6 +26,7 @@ const Dashboard = () => {
     },
   });
 
+  console.log(crypticCoin);
   
   return (
     <div className="p-6">
@@ -46,10 +47,11 @@ const Dashboard = () => {
               <tr key={c.id} className="border-b">
                 <td className="px-6 py-4 flex items-center gap-3">
                   <img src={c.image} alt={c.name} className="w-6 h-6" />
+                <Link to={`/coin/${c.symbol}`}>
                   <span className="font-medium ml-8">{c.name}</span>
+                </Link>
                 </td>
                 <td className="px-6 py-4 font-medium">${c.current_price.toLocaleString()}</td>
-
               </tr>
             ))}
           </tbody>
