@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -10,14 +11,21 @@ const Navbar = () => {
 
   return (
     <div className='flex bg-radial text-white from-[#2b0f5c] to-80% to-[#1d0544] justify-between items-center gap-47 h-22 px-20'>
-      <div className='max-w-30 pt-3 ml-3'><img src="/logo1.png" alt="logo" className='h-full w-full object-contain' />      
+      <div className='max-w-30 pt-3 ml-3'>
+        <Link to={`/home`}>
+        <img src="/logo1.png" alt="logo" className='h-full w-full object-contain' />      
+        </Link>
       </div>
       <ul className='hidden lg:flex gap-3'>
-        <li className='font-semibold text-xl px-4 py-3'>Home</li>
-        <li className='font-semibold text-xl px-4 py-3'>Solution</li>
-        <li className='font-semibold text-xl px-4 py-3'>FAQ</li>
-        <li className='font-semibold text-xl px-4 py-3 '>AboutUs</li>
-        <li className='font-semibold text-xl px-4 py-3'>Contact</li>
+        <Link to={`/home`}>
+         <li className='font-semibold text-xl px-4 py-3'>Home</li>
+         </Link>
+        <Link to={`/coin`}>
+         <li className='font-semibold text-xl px-4 py-3'>All Coins</li>
+         </Link>
+        <Link to={`/aboutus`}>
+         <li className='font-semibold text-xl px-4 py-3'>About Us</li>
+         </Link>
       </ul>
 
       <div onClick={handleNav} className='block lg:hidden cursor-pointer z-20'>
@@ -30,13 +38,19 @@ const Navbar = () => {
           : 'ease-in-out duration-500 fixed left-[-100%]'
         } lg:hidden`}>  
       
+        <Link to={`/home`}>
         <h1 className='w-full text-3xl font-bold text-[#33f781] m-4'>CRYPTIK.</h1>
+        </Link>
         <li className='p-4 border-b border-gray-600 h-3'>&nbsp;</li>
+        <Link to={`/home`}>
         <li className='p-4 border-b font-inter tracking-wide border-gray-600 text-[#fff]'>Home</li>
-        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>FAQ</li>
-        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>Resources</li>
-        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>About</li>
-        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>Contact</li>
+        </Link>
+        <Link to={`/coin`}>
+        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>All Coins</li>
+        </Link>
+        <Link to={`/aboutus`}>
+        <li className='p-4 border-b font-inter border-gray-600 text-[#fff]'>About Us</li>
+        </Link>
       </ul>
     </div>
   );
