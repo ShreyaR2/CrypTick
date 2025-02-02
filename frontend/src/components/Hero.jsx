@@ -28,7 +28,7 @@ const HeroSection = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum id quidem ducimus eum hic? Dolore vitae repellendus veritatis harum illum praesentium, adipisci doloribus obcaecati. Facere ab odit porro fugiat nam.
                     </p>
                     <div>
-                        <Link to='/dashboard'>
+                        <Link to='/home'>
                         <Button text='Dashboard' bgColor='#00df9a' textColor='black' />
                         </Link>
                     </div>

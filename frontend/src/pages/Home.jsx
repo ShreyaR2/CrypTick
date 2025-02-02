@@ -5,7 +5,6 @@ import CoinRanking from "../components/CoinRanking"
 // import Coin from "../"
 // import { axiosInstance } from "../lib/axios";
 import axios from "axios";
-import { useDataContext } from "../context/DataContext";
 
 const Dashboard = () => {
 
@@ -26,9 +25,6 @@ const Dashboard = () => {
     },
   });
 
-  //Adding data to context
-  const data = useDataContext();
-  data.setData(crypticCoin);
   
   return (
     <div className="p-6">
