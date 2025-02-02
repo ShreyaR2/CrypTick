@@ -25,14 +25,16 @@ const Dashboard = () => {
     },
   });
 
-  
+  const top10Coins = crypticCoin ? crypticCoin.slice(0, 10) : [];
+
   return (
     <div className="p-6">
+      <Hero1 />
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Top 10 Crypto Coins</h1>
       {isLoading && <p className="text-center">Loading...</p>}
-      {isError && <p className="text-center text-red-500">Error loading data</p>}
-      {crypticCoin && crypticCoin.length > 0 ? (
-        <CoinRanking crypticCoin={crypticCoin} />
+      {/* {isError && <p className="text-center text-red-500">Error loading data</p>} */}
+      {top10Coins && top10Coins.length > 0 ? (
+        <CoinRanking crypticCoin={top10Coins} />
       ):(
         <div>No data to show right now</div>
       )}

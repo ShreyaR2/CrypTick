@@ -47,7 +47,7 @@ const Coin = () => {
 
   const tokenData = crypticCoins?.find((t) => t.symbol === symbol);
 
-  return <CryptoCard tokenData={tokenData} />;
+  return <CryptoCard tokenData={tokenData} coinData={coinData} />;
 };
 
 export default Coin;

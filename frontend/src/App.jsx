@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import Coin from "./pages/Coin"
 import AllCoins from "./pages/AllCoins"
 import AboutUs from "./pages/AboutUs"
+import NotFound from "./pages/NotFound";
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
                 <Route path="coin" element={<AllCoins/>}/>
                 <Route path="coin/:symbol" element={<Coin/>}/>
                 <Route path="aboutus" element={<AboutUs/>}/>
+                <Route path="*" element={<NotFound/>}/>
             </Route>
         )
     )
