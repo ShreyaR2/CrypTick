@@ -2,7 +2,6 @@ const axios = require('axios');
 const Web3 = require('web3').Web3;
 const { HttpProvider } = require('web3-providers-http');
 const contractABI = require('../abi.json');
-const contractAddress = require('../contractAddress');
 require('dotenv').config();
 
 
@@ -13,7 +12,7 @@ const getIndividualData = async (req,res) => {
   const {tokenAddress} = req.body;
   
   try {
-    const contract = new web3.eth.Contract(contractABI, contractAddress);
+    const contract = new web3.eth.Contract(contractABI, process.env.CONTRACT_ADDRESS);
     const result = await contract.methods.getMarketData(tokenAddress).call();
 
     const SCALE_FACTOR = 1e11;
@@ -64,7 +63,7 @@ const getAllData = async (req,res) => {
   let finalData = [];
   for (let i = 0; i < memeCoins.length; i++) {
     try {
-      const contract = new web3.eth.Contract(contractABI, contractAddress);
+      const contract = new web3.eth.Contract(contractABI, process.env.CONTRACT_ADDRESS);
       const result = await contract.methods.getMarketData(memeCoins[i]).call();
 
       const SCALE_FACTOR = 1e11;
